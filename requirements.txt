@@ -6,3 +6,8 @@ python-dotenv
 google-generativeai
 PyMuPDF
 python-docx
+pytesseract
+celery
+redis
+Pillow
+

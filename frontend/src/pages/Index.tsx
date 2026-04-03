@@ -149,9 +149,20 @@ export default function Index() {
 
                   {/* Right: Results */}
                   <div className="glass-panel p-5">
-                    <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
-                      Analysis Results
-                    </h3>
+                    <div className="flex items-center justify-between mb-3">
+                      <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                        Analysis Results
+                      </h3>
+                      {result && (
+                        <button 
+                          onClick={() => { setFile(null); setResult(null); setFileUrl(""); setStep(0); }}
+                          className="text-xs font-medium bg-primary/10 text-primary hover:bg-primary/20 px-3 py-1.5 rounded-md transition-colors inline-flex items-center gap-1"
+                        >
+                          <FileSearch className="w-3.5 h-3.5" />
+                          Check Another Document
+                        </button>
+                      )}
+                    </div>
                     {result ? (
                       <ResultTabs data={result} />
                     ) : (

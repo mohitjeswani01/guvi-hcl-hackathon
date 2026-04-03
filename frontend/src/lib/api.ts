@@ -1,4 +1,4 @@
-const API_URL = "https://your-backend-api.com/api/document-analyze";
+const API_URL = "http://127.0.0.1:8000/api/document-analyze";
 
 export interface AnalyzeResponse {
   summary: string;
@@ -18,13 +18,14 @@ export async function analyzeDocument(
   fileName: string,
   apiKey: string
 ): Promise<AnalyzeResponse> {
+  const fileType = fileName.split('.').pop() || 'image';
   const res = await fetch(API_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "x-api-key": apiKey,
     },
-    body: JSON.stringify({ file: base64, fileName }),
+    body: JSON.stringify({ fileName, fileType, fileBase64: base64 }),
   });
 
   if (res.status === 401) {
