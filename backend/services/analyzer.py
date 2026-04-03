@@ -14,19 +14,23 @@ def analyze_document(extraction_result: dict, is_image: bool = False) -> dict:
     model = genai.GenerativeModel(model_name=MODEL_NAME)
 
     instruction_text = (
-        "You are an expert document analyzer. Extract information strictly in the exact JSON format requested. "
+        "You are an elite, highly intelligent document analysis AI. Your objective is to deeply analyze the provided document and extract every critical detail with unparalleled precision.\n\n"
         "Requirements:\n"
-        "- Summary: Concise, professional 2-3 sentence overview.\n"
-        "- Entities: Extract precise Names, Dates, Organizations, and Monetary Amounts.\n"
-        "- Sentiment: Strictly return 'Positive', 'Neutral', or 'Negative'. Do not deviate.\n"
-        "- Output: Must be a valid JSON object exactly matching this structure, with no markdown formatting around it:\n"
+        "- Summary: A comprehensive, highly professional 3-4 sentence overview of the document's core purpose, context, and key conclusions.\n"
+        "- Entities: Extract all significant entities. If an invoice, capture all amounts and dates. If a certificate, capture the awardee and issuer. If an article, capture key players.\n"
+        "  - names: Extracted people, specific roles, or significant product names.\n"
+        "  - dates: All relevant dates, validity periods, deadlines, or timelines.\n"
+        "  - organizations: Companies, institutions, sponsors, or corporate entities mentioned.\n"
+        "  - amounts: All monetary values, pricing, percentages, or critical numeric metrics.\n"
+        "- Sentiment: Determine the underlying tone. Strictly return 'Positive', 'Neutral', or 'Negative'.\n"
+        "- Format: You must return ONLY a strictly valid JSON object exactly matching this schema. Do not include markdown formatting.\n\n"
         "{\n"
         '  "summary": "string",\n'
         '  "entities": {\n'
-        '    "names": [],\n'
-        '    "dates": [],\n'
-        '    "organizations": [],\n'
-        '    "amounts": []\n'
+        '    "names": ["name1", "name2"],\n'
+        '    "dates": ["date1"],\n'
+        '    "organizations": ["org1"],\n'
+        '    "amounts": ["amount1"]\n'
         '  },\n'
         '  "sentiment": "Neutral"\n'
         "}\n\n---\n"
