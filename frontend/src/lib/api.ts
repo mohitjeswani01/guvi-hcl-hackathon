@@ -1,4 +1,4 @@
-const API_URL = "http://127.0.0.1:8000/api/document-analyze";
+const API_URL = "https://hcl-idp-backend.onrender.com/api/document-analyze";
 
 export interface AnalyzeResponse {
   summary: string;
