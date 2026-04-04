@@ -1,7 +1,7 @@
 const API_URL = "https://hcl-idp-backend.onrender.com/api/document-analyze";
-
 export interface AnalyzeResponse {
   summary: string;
+  details?: string;
   sentiment: "positive" | "negative" | "neutral";
   confidence: number;
   entities: {

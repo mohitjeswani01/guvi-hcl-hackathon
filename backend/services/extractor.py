@@ -33,7 +33,7 @@ def extract_text(file_bytes: bytes, file_type: str) -> dict:
             logging.error(f"python-docx Error: {e}")
             result["text"] = ""
             
-    elif file_type == "image":
+    elif file_type in ["image", "jpg", "jpeg", "png", "webp", "bmp", "gif", "tiff"] or file_type.startswith("image/"):
         # Raw bytes for high accuracy Gemini vision
         result["image_bytes"] = file_bytes
         

@@ -66,9 +66,18 @@ export function ResultTabs({ data }: ResultTabsProps) {
             </div>
           </div>
 
-          <div className="space-y-2">
-            <h3 className="text-sm font-semibold text-foreground">Summary</h3>
-            <p className="text-sm leading-relaxed text-muted-foreground">{data.summary}</p>
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <h3 className="text-sm font-semibold text-foreground">Summary</h3>
+              <p className="text-sm leading-relaxed text-muted-foreground whitespace-pre-line">{data.summary}</p>
+            </div>
+            
+            {data.details && (
+              <div className="space-y-2">
+                <h3 className="text-sm font-semibold text-foreground">Detailed Extraction</h3>
+                <p className="text-sm leading-relaxed text-muted-foreground whitespace-pre-line">{data.details}</p>
+              </div>
+            )}
           </div>
         </TabsContent>
 

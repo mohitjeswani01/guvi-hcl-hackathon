@@ -16,5 +16,6 @@ class AnalyzeResponse(BaseModel):
     status: Literal["success", "error"]
     fileName: str
     summary: str
+    details: str
     entities: Entities
     sentiment: Literal["Positive", "Neutral", "Negative"]

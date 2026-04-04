@@ -17,6 +17,7 @@ def analyze_document(extraction_result: dict, is_image: bool = False) -> dict:
         "You are an elite, highly intelligent document analysis AI. Your objective is to deeply analyze the provided document and extract every critical detail with unparalleled precision.\n\n"
         "Requirements:\n"
         "- Summary: A comprehensive, highly professional 3-4 sentence overview of the document's core purpose, context, and key conclusions.\n"
+        "- Details: A brief and concise extraction (3-5 sentences max) of crucial theory-related details and key data points that go beyond the summary, without being overly exhaustive.\n"
         "- Entities: Extract all significant entities. If an invoice, capture all amounts and dates. If a certificate, capture the awardee and issuer. If an article, capture key players.\n"
         "  - names: Extracted people, specific roles, or significant product names.\n"
         "  - dates: All relevant dates, validity periods, deadlines, or timelines.\n"
@@ -26,6 +27,7 @@ def analyze_document(extraction_result: dict, is_image: bool = False) -> dict:
         "- Format: You must return ONLY a strictly valid JSON object exactly matching this schema. Do not include markdown formatting.\n\n"
         "{\n"
         '  "summary": "string",\n'
+        '  "details": "string",\n'
         '  "entities": {\n'
         '    "names": ["name1", "name2"],\n'
         '    "dates": ["date1"],\n'
@@ -133,6 +135,7 @@ def analyze_document(extraction_result: dict, is_image: bool = False) -> dict:
                 
                 return {
                     "summary": f"Analysis failed across all providers! Error: {err_msg}",
+                    "details": "",
                     "entities": {
                         "names": [], "dates": [], "organizations": [], "amounts": []
                     },

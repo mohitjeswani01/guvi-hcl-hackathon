@@ -46,13 +46,15 @@ async def analyze_document_endpoint(request: AnalyzeRequest):
         
         logging.info("Executing Sync Local Extraction Pipeline")
         extraction = extract_text(file_bytes, request.fileType)
-        analysis_result = analyze_document(extraction, request.fileType.lower() == "image")
+        is_image = request.fileType.lower() in ["image", "jpg", "jpeg", "png", "webp", "bmp", "gif", "tiff"] or request.fileType.lower().startswith("image/")
+        analysis_result = analyze_document(extraction, is_image)
         logging.info("Sync Execution Complete.")
         
     except Exception as local_err:
         logging.error(f"Execution failed: {local_err}")
         analysis_result = {
             "summary": "Analysis pending / Execution error.",
+            "details": "",
             "entities": {"names": [], "dates": [], "organizations": [], "amounts": []},
             "sentiment": "Neutral"
         }
@@ -66,6 +68,7 @@ async def analyze_document_endpoint(request: AnalyzeRequest):
         status="success",
         fileName=request.fileName,
         summary=analysis_result.get("summary", "Analysis pending."),
+        details=analysis_result.get("details", ""),
         entities=Entities(
             names=entities_data.get("names", []),
             dates=entities_data.get("dates", []),
