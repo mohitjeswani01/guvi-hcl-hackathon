@@ -31,10 +31,14 @@ This project is an Intelligent Document Processing (IDP) system that can automat
     - If Quota Limits trigger, `analyzer.py` catches the crash and dynamically re-routes the OCR Text to Groq using a `json_object` enforcement flag via Cloudflare-Bypassed `urllib` wrappers.
 5. **Dashboard Delivery**: The strict JSON string is decoded natively and passed back to React to smoothly animate into the beautiful Result Tabs.
 
+## 🔗 Presentation Link
+https://gamma.app/docs/AI-Powered-Document-Analysis-Extraction-a1nkgcgyzwnl541
+
 ## 🤖 AI Tools Used
 As per hackathon requirements, here are the AI tools utilized during the ideation and development phase of this project:
 - **Google Deepmind / Gemini AI**: Used natively as the core backend inference engine to extract documents.
 - **Groq & Cohere AI**: Used as our core Fallback system engines.
+- **Claude Code**: Used for development support.
 
 ## ⚠️ Known Limitations
 - The OCR (Pytesseract) fallback for images requires the binary `tesseract.exe` to be installed on the native hosting machine environment.
