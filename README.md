@@ -38,6 +38,7 @@ https://gamma.app/docs/AI-Powered-Document-Analysis-Extraction-a1nkgcgyzwnl541
 As per hackathon requirements, here are the AI tools utilized during the ideation and development phase of this project:
 - **Google Deepmind / Gemini AI**: Used natively as the core backend inference engine to extract documents.
 - **Groq & Cohere AI**: Used as our core Fallback system engines.
+- **Claude Code**: Used for development support.
 
 ## ⚠️ Known Limitations
 - The OCR (Pytesseract) fallback for images requires the binary `tesseract.exe` to be installed on the native hosting machine environment.
